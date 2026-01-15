@@ -25,6 +25,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         temp_dir = os.path.dirname(audio_path)
         os.remove(audio_path)
         os.rmdir(temp_dir)
+        await update.message.delete()
     except Exception as e:
         await update.message.reply_text(f"{str(e)[:100]}")
 
